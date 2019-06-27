@@ -1,0 +1,74 @@
+/* 
+	Font Icon 
+	------------------------------------------------
+*/
+@font-face {
+  font-family: 'cid';
+  src:  url('../fonts/cid.eot?ln43p2');
+  src:  url('../fonts/cid.eot?ln43p2#iefix') format('embedded-opentype'),
+    url('../fonts/cid.ttf?ln43p2') format('truetype'),
+    url('../fonts/cid.woff?ln43p2') format('woff'),
+    url('../fonts/cid.svg?ln43p2#cid') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="cid-"], [class*=" cid-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'cid' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.cid-down-arrow:before {
+  content: "\e900";
+  color: #b6b5b5;
+}
+.cid-burger-nav:before {
+  content: "\e901";
+}
+.cid-address:before {
+  content: "\e902";
+  color: #9f9e9e;
+}
+.cid-email:before {
+  content: "\e903";
+  color: #9f9e9e;
+}
+.cid-logo:before {
+  content: "\e904";
+  color: #fff;
+}
+.cid-phone:before {
+  content: "\e905";
+  color: #9f9e9e;
+}
+.cid-zoom-in:before {
+  content: "\e987";
+}
+.cid-cross:before {
+  content: "\e907";
+}
+.cid-arrow-right:before {
+  content: "\e908";
+}
+.cid-facebook:before {
+  content: "\e909";
+}
+.cid-instagram:before {
+  content: "\e90a";
+}
+.cid-twitter:before {
+  content: "\e90b";
+}
+.cid-linkedin2:before {
+  content: "\e90c";
+}

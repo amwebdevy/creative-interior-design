@@ -1,0 +1,360 @@
+/*
+	Import 
+	------------------------------------------------
+*/  
+@import 'base/base';   
+@import 'base/fonticon';   
+@import 'base/mixins';       
+@import 'base/placeholders'; 
+@import 'base/variables';     
+
+// Large (2 Fixed Columns(Left and Right))
+@media only screen and (min-width: 901px) {
+  .toggle { display: none; }
+  
+  .cid-sidebar-left { flex: 12vw;
+    .fixed-left { position: fixed; width: 13vw; min-width: 225px; height: 100vh; padding: 1vw!important; grid-template-rows: 1fr 3fr 2fr;
+      section.logo { padding-top: 30px;
+        span { font-size: 5em; }
+      }
+      .cid-navigation { 
+        ul { font-size: 2.1em; }
+      }
+      section.cid-sidebar-footer { 
+        .cid-social-sidebar { display: none; }
+      }
+    }
+  }
+
+  .cid-content { flex: 82vw; 
+    section { padding: 1vw 12vw;
+      @media only screen and (max-width: 1400px) {
+        padding: 1vw 8vw 1vw 11vw;
+      }
+      .section-title { text-align: center; position: relative; font-weight: 100; font-size: 2.5em;
+        &:after { position: absolute; bottom: -6px; left: 0; right: 0; width: 50px; height: 1px; content: ''; background: #000; margin: 0 auto; }
+      } 
+      &.cid-home { align-items: right; padding: 2.5em;
+        .landing-content { text-align: right; padding: 1em 0 4em 0; 
+          h1 { font-size: 3.5em; margin-bottom: 0.2em; }
+          h3 { font-size: 1.8em; margin-top: 0.2em; margin-bottom: 0.5em; }
+        }
+        a.scroll-down { position: absolute; bottom: 0; left: 0; right: 0; text-align: center;
+          span { font-size: 4em; @include animate( all, 280ms ); 
+            &:hover {
+              font-size: 2.5em; opacity: 0.8; 
+            }
+          }
+        }
+      }
+      &.cid-about { 
+        .cid-bio { display: flex; flex-direction: row; margin: 5em 0 .5em 0;
+          .bio-img-container { width: 45%; flex: 1; margin-left: 1.5em; margin-right: 1.5em;
+            .cid-bio-img { width: 100%; height: auto; margin-top: 1em; } 
+          }
+          .bio-content-container { width: 65%; flex: 1;
+          }
+        }
+      }
+      &.cid-work { 
+        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(27, 1fr); grid-gap: 2.5vw; margin: 5em 0 .5em 0;
+          .cid-service-info { 
+              h1 { z-index: 1; font-size: 2.2em; }
+            .service-zoom { display: none; }
+            &.living-room { grid-row: 1 / 14; }
+            &.home-office { grid-row: 14 / 21; }
+            &.bedroom { grid-row: 1 / 8; }
+            &.office { grid-row: 8 / 15;}
+            &.kitchen { grid-row: 15 / 28;}
+            &.bathroom { grid-row: 1 / 12; }
+            &.kids-room { grid-row: 12 / 23; }
+            &.reveal-content { position: relative; visibility: visible; opacity: 1;
+              -moz-transition: opacity 250ms linear, visibility 0s linear;
+              -o-transition: opacity 250ms linear, visibility 0s linear;
+              -webkit-transition: opacity 250ms linear, visibility 0s linear;
+              transition: opacity 250ms linear, visibility 0s linear; }
+            &.hide { opacity: 0; visibility: hidden; 
+              -moz-transition: opacity 250ms linear, visibility 0s linear 250ms;
+              -o-transition: opacity 250ms linear, visibility 0s linear 250ms;
+              -webkit-transition: opacity 250ms linear, visibility 0s linear;
+              -webkit-transition-delay: 0s, 250ms;
+              transition: opacity 250ms linear, visibility 0s linear 250ms; }
+            &.show { display: flex; flex-direction: row; width: 58.5vw; 
+              h1 { display: none; }
+              .service-bg { flex: 13vw; }
+              .services-content { flex: 20vw; margin: 0 2em 4em 2em;
+                h2 { font-size: 2em;  margin: 0; color: $grey-alt; font-weight: 100; }
+                p { color: $grey-alt; margin-top: 2em; }
+                .book-appointment { position: absolute; bottom: 0; right: 0; padding: 1em 2em; background-color: $light-grey; cursor: pointer; @include animate( background-color, 280ms );
+                  span { letter-spacing: 0.06em; @include animate( color, 280ms );
+                    i { margin-left: 0.5em;  }
+                  }
+                  &:hover {
+                    background-color: $grey-alt;
+                    span { color: $primary; }
+                  }
+                }
+              }
+            }
+            &:hover:not(.show) { cursor: pointer;
+              .services-title { display: none; }
+              .service-zoom { align-self: center; justify-self: center; position: absolute; display: block; font-size: 3.2em; color: $light-grey; z-index: 1; opacity: 0.5; }
+              .service-bg { display: grid;
+                -webkit-transform: scale(1.1);
+                transform: scale(1.1);
+                &:after {
+                   -webkit-box-shadow: inset 0px 10px 81px 8px rgba(0,0,0,0.41);
+                  -moz-box-shadow: inset 0px 10px 81px 8px rgba(0,0,0,0.41);
+                  box-shadow: inset 0px 10px 81px 8px rgba(0,0,0,0.41);
+                }     
+              }
+            }
+          }
+        }
+        .hidden {
+          display: none;
+        }
+
+        .revealed {
+          display: block;
+        }
+
+        .show {
+          -webkit-animation: slide-up .2s ease-in;
+          -moz-animation: slide-up .2s ease-in;
+          grid-column: 1 / 4!important;
+          grid-row: 1 / 15!important;
+        }
+        @-webkit-keyframes slide-up {
+          0% { opacity: 0; -webkit-transform: translateY(100%); }   
+          100% { opacity: 1; -webkit-transform: translateY(0); }
+        }
+        @-moz-keyframes slide-up {
+              0% { opacity: 0; -moz-transform: translateY(100%); }   
+            100% { opacity: 1; -moz-transform: translateY(0); }
+        }
+
+        .close { position: absolute; top: 0; right: 0; cursor: pointer; @include animate( color, 280ms );
+          &:hover {
+            color: $light-grey;
+          }
+
+        }
+      }
+      &.cid-contact { display: grid; padding-bottom: 0;
+        .section-title {  margin-bottom: 2em; }
+        .contact-info { text-align: center; width: 75%; max-width: 530px; margin: 0 auto; padding: 2.4em 0 0 0; 
+          p:first-of-type { float: left; }
+          p:nth-of-type(2) { float: right; }
+          p:last-of-type { clear: both; }
+          p {font-size: 1.5em; }
+        }
+        .contact-form-container {
+          form {
+            .form-group { margin: 0.8em 0;
+              &:first-of-type, &:nth-of-type(2) { display: inline-block; width: 49%; }
+              &:first-of-type { float: left; }
+              &:nth-of-type(2) { float: right; }
+              &:last-of-type { clear: both; }
+              .cid-form-control { width: 100%; }
+              input[type="text"] { height: 65px; }
+              textarea { height: 14vw; }
+            }
+            .submit-container { text-align: center; }
+          }
+        }
+        .scroll-home { text-align: center; padding: 21px; font-size: 3.5em; @include animate( font-size, 280ms ); cursor: pointer;
+          align-self: center; justify-self: center; opacity: 0.3; padding-bottom: 0;
+          span { padding: 5px; 
+            &:before { @include animate( color, 280ms ); }
+            &:hover { 
+              &:before { color: $light-grey; }
+            }
+          }
+          &:hover { font-size: 3em; }
+        }
+      }
+    }
+    section:not(.cid-home) { 
+      background: $primary;
+      z-index: 1;
+    }
+    .scroll-top { display: none!important; }
+  }
+  .cid-sidebar-right { flex: 4vw;
+    .fixed-right { position: fixed; right: 0; width: 5vw; min-width: 80px; height: 100vh; padding: 1vw!important; display: flex; align-items: center; justify-content: center;
+      section.sidebar-right-content { 
+        .cid-social-sidebar { color: $primary; }
+      }
+    }
+  }
+}
+
+// Medium (1 Fixed Column(Left))
+@media only screen and (max-width: 1200px) {
+  .cid-sidebar-left { flex: 2 0 3vw;
+    .fixed-left { width: 21vw; min-width: 200px; 
+      section.logo { 
+        span { font-size: 4.5em; }
+      }
+      section.cid-sidebar-footer { 
+        .cid-social-sidebar { display: block; 
+          ul { font-size: 1.8em; 
+            li { display: inline-block; margin-right: .1em;
+              a { color: $primary; @include animate( all, 280ms );
+                &:hover {
+                  color: $grey-alt; 
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .cid-content { flex: 70vw; 
+    section { 
+      .section-title { text-align: center; position: relative; font-weight: 100; font-size: 2.2em;
+        &:after { position: absolute; bottom: -6px; left: 0; right: 0; width: 50px; height: 1px; content: ''; background: #000; margin: 0 auto; }
+      } 
+      &.cid-home { padding: 1em;
+        .landing-content { padding: 1em 0 4em 1em;
+          h1 { font-size: 2.8em; }
+          h3 { font-size: 1.5em; }
+        }
+        a.scroll-down { 
+          span { font-size: 3.5em; 
+            &:hover {
+              font-size: 2.5em; 
+            }
+          }
+        }
+      }
+      &.cid-about { padding: 1vw 2vw 1vw 4vw;
+        .cid-bio { 
+          .bio-img-container { margin-left: 0em; }
+          .bio-content-container { 
+          }
+        }
+      }
+      &.cid-work { padding: 1vw 2vw 1vw 4vw;
+        .services-grid { 
+          .cid-service-info { 
+            h1 { font-size: 1.6em; }
+            &.living-room { grid-row: 1 / 14; }
+            &.home-office { grid-row: 14 / 25; }
+            &.bedroom { grid-row: 1 / 10; }
+            &.office { grid-row: 1 / 15;}
+            &.kitchen { grid-row: 19 / 32;}
+            &.bathroom { grid-row: 10 / 19; }
+            &.kids-room { grid-row: 15 / 29; }
+            &.reveal-content { 
+              &.show { width: 67.5vw;
+                .service-bg { flex: 4vw; background-position: 46% 50%; }
+              }
+            }
+            .services-content { margin: 0 2em 4em 2em!important; }
+          }
+        }
+      }
+      &.cid-contact { padding: 1vw 2vw 1vw 4vw;
+        .contact-info { width: 99%; max-width: 520px;
+          p {font-size: 1.6em; }
+        }
+      }
+    }
+  }
+  .cid-sidebar-right { display: none; }
+}
+
+// Small (Fixed Left Sidebar Column)
+@media only screen and (max-width: 900px) {
+  .toggle { 
+    font-size: 1.5em; display: block; position: fixed; padding: 22px; z-index: 2; cursor: pointer; @include animate( all, 280ms ); 
+    &:hover {
+      font-size: 1.3em;  
+    }
+  }
+  .cid-sidebar-left { position: fixed; left: -380px;  @include animate( left, 280ms ); z-index: 9999!important;
+    .fixed-left { height: 100vh; width: 40vw; min-width: 200px; padding: 5vw!important; grid-template-rows: 1fr 4fr 2fr;
+      section.logo { padding: 0!important;
+        span { font-size: 4em; }
+      }
+      .cid-navigation { 
+        ul { font-size: 2em; }
+      }
+    }
+  }
+
+  .open { left: 0; } 
+  
+  .fixed-right{ display: none; }
+  
+  .cid-content { display: flex; flex-direction: column; 
+    section { padding: 20px!important;
+      .section-title { font-size: 2.3em; margin: .5em 0 .5em 0; 
+        &:after { width: 40px; height: 2px; }
+      }
+      &.cid-home{ align-items: center;
+        .landing-content { text-align: center; width: 100%; padding: 1em 0 4em 0em;
+          h1 { font-size: 2.5em; margin-bottom: 0.2em; }
+          h3 { font-size: 1.2em; margin-top: 0; }
+        }
+        a.scroll-down {
+          span { font-size: 3em; @include animate( all, 280ms ); 
+            &:hover {
+              font-size: 2.5em; opacity: 0.8; 
+            }
+          }
+        }
+      }
+      &.cid-about {
+        .cid-bio { 
+          .cid-bio-img { width: 100%; height: auto; margin: 1.8em 0 .5em 0; }
+        }
+      }
+      &.cid-work {
+        .cid-service-info { margin: 3.2em 0 .5em 0; display: block; width: 100%; height: 68vw; min-height: 200px;
+          .services-title {  font-size: 2.5em!important; 
+            @media only screen and (max-width: 500px) {
+              font-size: 2em!important; 
+            }
+          }
+          P { display: none; }
+          span { display: none; }
+        }
+      }
+      &.cid-contact {
+        .contact-info { padding: 1.4em 0 0 0; word-wrap: break-word; word-break: break-all;
+          p { font-size: 1.4em; 
+            span:not(.mobile-break) { float: left; }
+            .mobile-break { display: inline-block; }
+          }
+        }
+        .contact-form-container {
+          form {
+            .form-group { margin: 0.8em 0;
+              .cid-form-control { width: 100%; }
+              input[type="text"] { height: 40px; }
+              textarea { height: 100px; }
+            }
+          }
+        }
+        .scroll-home { display: none; }
+      }
+    }
+    .scroll-top { position: fixed; bottom: 5px; right: 0; display: none; padding: 21px; font-size: 3em; z-index: 1;
+      span { border: 2px solid $grey; padding: 5px; @include animate( border-color, 280ms ); 
+        &:hover { border-color: $light-grey; }
+      }
+    }
+  }
+  .nav-overlay { display: none; height: 120vh; position: fixed; top: 0; left: 0; right: 0; opacity: 0;  z-index: 997; background-color: rgba(0,0,0,0.5); }
+}
+
+
+
+
+
+
+
