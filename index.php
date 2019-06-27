@@ -138,7 +138,7 @@
             mandaremus dolor labore nam lorem, quo sunt graviterque. Incididunt aut sunt 
             laborum, ne duis admodum domesticarum, veniam voluptatibus tempor irure quamquam 
             de quamquam enim nulla aut summis.</p>
-          </div>
+          </div><!-- .bio-content-container -->
         </div><!-- .cid-bio -->
         
       </section>
