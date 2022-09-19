@@ -1,2 +1,3 @@
 # creative-interior-design
-Personal project for web portfolio
+
+Static version of personal project for web portfolio
